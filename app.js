@@ -26,6 +26,8 @@ function render(req, res) {
 async function wordpress(req, res) {
     const content = req.query.content;     
     
+    console.error(content);
+
     try {
         const getToken = await fetch("https://wordpress.kodaktor.ru/wp-json/jwt-auth/v1/token", {
             method: "POST",
@@ -38,6 +40,8 @@ async function wordpress(req, res) {
 
     
         const { token } = await getToken.json();
+
+        console.error(token);
 
         const createPost = await fetch("https://wordpress.kodaktor.ru/wp-json/wp/v2/posts", {
             method: "POST",
