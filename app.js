@@ -24,32 +24,36 @@ function render(req, res) {
 
 async function wordpress(req, res) {
     const content = req.query.content;     
-        
-    const getToken = await fetch("https://wordpress.kodaktor.ru/wp-json/jwt-auth/v1/token", {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username: "gossjsstudent2017", password: "|||123|||456" }),
-    });
+    
+    try {
+        const getToken = await fetch("https://wordpress.kodaktor.ru/wp-json/jwt-auth/v1/token", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username: "gossjsstudent2017", password: "|||123|||456" }),
+        });
 
-    const { token } = await getToken.json();
-        
-        
-    const createPost = await fetch("https://wordpress.kodaktor.ru/wp-json/wp/v2/posts", {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-            'status': 'publish',
-            'title': login,
-            'content': content
+    
+        const { token } = await getToken.json();
+
+        const createPost = await fetch("https://wordpress.kodaktor.ru/wp-json/wp/v2/posts", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                'status': 'publish',
+                'title': login,
+                'content': content
+            })
         })
-    })
+    } catch (e) {
+        console.error(e);
+    }
 }
 
 app.all('/login/', login)
