@@ -51,9 +51,9 @@ async function wordpress(req, res) {
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                'status': 'publish',
-                'title': 'mpower17',
-                'content': content
+                status: "publish",
+                title: "mpower17",
+                content: content
             })
         })
     } catch (e) {
