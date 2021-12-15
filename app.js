@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
+import fetch from 'node-fetch';
 
 const CORS = {
     'Access-Control-Allow-Origin': '*',
