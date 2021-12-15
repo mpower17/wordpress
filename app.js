@@ -52,7 +52,7 @@ async function wordpress(req, res) {
             },
             body: JSON.stringify({
                 'status': 'publish',
-                'title': login,
+                'title': 'itmo286434',
                 'content': content
             })
         })
