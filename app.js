@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 function login(req, res) {
     res.set(CORS);
-    res.send("itmo286434");
+    res.send("mpower17");
 }
 
 function render(req, res) {
@@ -52,7 +52,7 @@ async function wordpress(req, res) {
             },
             body: JSON.stringify({
                 'status': 'publish',
-                'title': 'itmo286434',
+                'title': 'mpower17',
                 'content': content
             })
         })
